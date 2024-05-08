@@ -54,6 +54,7 @@ linked_list.append(2)
 linked_list.append(3)
 linked_list.append(4)
 linked_list.append(5)
+linked_list.append(6)
 
 print("Original linked list: ")
 linked_list.print_list()

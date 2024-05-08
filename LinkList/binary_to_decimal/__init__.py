@@ -20,6 +20,13 @@ class LinkedList:
                 current = current.next
             current.next = new_node
         self.length += 1
+    def find_leght(self):
+        len = 1
+        temp = self.head
+        while temp.next is not None:
+            len +=1
+            temp = temp.next
+        return len
 
     def print_list(self):
         if self.head is None:
@@ -32,21 +39,32 @@ class LinkedList:
                 temp = temp.next
             print(" -> ".join(values))
 
+    @property
     def binary_to_decimal(self):
         result = 0
         temp = self.head
-        for count in range(self.length-1, -1, -1):
-            result += temp.value * (2 ** count)
+        # for count in range(self.length-1, -1, -1):
+        #     result += temp.value * (2 ** count)
+        #     temp = temp.next
+        # return result
+        while temp:
+            result = (result*2) + temp.value
             temp = temp.next
         return result
 
 
+link_list = LinkedList(1)
+link_list.append(0)
+link_list.append(1)
+link_list.append(0)
+result = link_list.binary_to_decimal
+print(f"{result=}")
 
 # Test case 1: Binary number 110 = Decimal number 6
 linked_list = LinkedList(1)
 linked_list.append(1)
 linked_list.append(0)
-result = linked_list.binary_to_decimal()
+result = linked_list.binary_to_decimal
 try:
     assert result == 6
     print("Test case 1 passed, returned: ", result)
@@ -58,7 +76,7 @@ linked_list = LinkedList(1)
 linked_list.append(0)
 linked_list.append(0)
 linked_list.append(0)
-result = linked_list.binary_to_decimal()
+result = linked_list.binary_to_decimal
 try:
     assert result == 8
     print("Test case 2 passed, returned: ", result)
@@ -67,7 +85,7 @@ except AssertionError:
 
 # Test case 3: Binary number 0 = Decimal number 0
 linked_list = LinkedList(0)
-result = linked_list.binary_to_decimal()
+result = linked_list.binary_to_decimal
 try:
     assert result == 0
     print("Test case 3 passed, returned: ", result)
@@ -76,7 +94,7 @@ except AssertionError:
 
 # Test case 4: Binary number 1 = Decimal number 1
 linked_list = LinkedList(1)
-result = linked_list.binary_to_decimal()
+result = linked_list.binary_to_decimal
 try:
     assert result == 1
     print("Test case 4 passed, returned: ", result)
@@ -88,7 +106,7 @@ linked_list = LinkedList(1)
 linked_list.append(1)
 linked_list.append(0)
 linked_list.append(1)
-result = linked_list.binary_to_decimal()
+result = linked_list.binary_to_decimal
 try:
     assert result == 13
     print("Test case 5 passed, returned: ", result)
